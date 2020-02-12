@@ -4,7 +4,7 @@ tools {
   maven 'mavn'
 }
   stages{
-    stage{
+    stage('clean test'){
       steps{
         sh script: 'mvn clean test'
       }
