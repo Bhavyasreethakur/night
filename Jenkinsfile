@@ -4,10 +4,22 @@ tools {
   maven 'mavn'
 }
   stages{
-    stage('clean test'){
-      steps{
-        sh script: 'mvn clean test'
-      }
+    stage('Clone') { 
+            steps {
+                sh "rm -rf MavenProject"
+                sh "git clone https://github.com/Bhavyasreethakur/MavenProject.git"
+                sh "mvn clean"
+            }
+        }
+        stage('Test') {
+            steps {
+               sh "mvn test" 
+            }
+        }
+        stage('Deploy'){
+            steps{
+              sh "mvn package"  
+            }
+        }
     }
-  }
-}
+    }
